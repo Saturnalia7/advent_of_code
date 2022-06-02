@@ -5,9 +5,9 @@ def read_data():
     return data
 
 
-def main():
+def part1():
     data = read_data()
-    counter = 0
+    result = 0
     previous_val = None
     for record in data:
         # Cast to integer
@@ -18,10 +18,33 @@ def main():
 
         # Evaluate
         if previous_val < record:
-            counter += 1
+            result += 1
 
         previous_val = record
-    print(counter)
+    return result
+
+
+def part2():
+    data = read_data()
+    previous_sum = None
+    result = 0
+    for idx, record in enumerate(data):
+        if idx < 2:
+            continue
+        sum = int(data[idx]) + int(data[idx - 1]) + int(data[idx - 2])
+        if previous_sum is None:
+            previous_sum = sum
+
+        if previous_sum < sum:
+            result += 1
+
+        previous_sum = sum
+    return result
+
+
+def main():
+    print(part1())
+    print(part2())
 
 
 # If done via python main.py in terminal,
