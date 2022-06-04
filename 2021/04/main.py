@@ -9,7 +9,7 @@ class Board:
 
     def _make_rows(self, data: list):
         rows = [0] * len(data)
-        for idx, row in enumerate(data):
+        for idx, _ in enumerate(data):
             rows[idx] = [int(val) for val in data[idx].split()]
         return rows
 
